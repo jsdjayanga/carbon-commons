@@ -1,0 +1,23 @@
+diff --git a/components/deployment-synchronizer/org.wso2.carbon.deployment.synchronizer.subversion/src/main/java/org/wso2/carbon/deployment/synchronizer/subversion/SVNBasedArtifactRepository.java b/components/deployment-synchronizer/org.wso2.carbon.deployment.synchronizer.subversion/src/main/java/org/wso2/carbon/deployment/synchronizer/subversion/SVNBasedArtifactRepository.java
+index 772c03e..c9ed2e4 100644
+--- a/components/deployment-synchronizer/org.wso2.carbon.deployment.synchronizer.subversion/src/main/java/org/wso2/carbon/deployment/synchronizer/subversion/SVNBasedArtifactRepository.java
++++ b/components/deployment-synchronizer/org.wso2.carbon.deployment.synchronizer.subversion/src/main/java/org/wso2/carbon/deployment/synchronizer/subversion/SVNBasedArtifactRepository.java
+@@ -348,6 +348,18 @@ public class SVNBasedArtifactRepository implements ArtifactRepository {
+             cleanupDeletedFiles(tenantId, root);
+             ISVNStatus[] status = svnClient.getStatus(root, true, false);
+             if (status != null && status.length > 0 && !isAllUnversioned(status)) {
++
++                boolean isIgnored = false;
++                for(int var13 = 0; var13 < status.length; ++var13) {
++                    if(status[var13].getTextStatus() != SVNStatusKind.IGNORED) {
++                        return false;
++                    }
++                }
++
++                if(isIgnored) {
++                    return false;
++                }
++
+                 File[] files = new File[] { root };
+                 svnClient.commit(files, "Commit initiated by deployment synchronizer", true);
+ 

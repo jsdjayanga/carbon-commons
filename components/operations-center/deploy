@@ -1,0 +1,4 @@
+cp org.wso2.carbon.operationscenter/target/org.wso2.carbon.operationscenter-4.5.0-SNAPSHOT.jar /home/jayanga/WSO2/Issues/Development/OC/wso2esb-4.9.0/repository/components/dropins/.
+cp org.wso2.carbon.operationscenter.stub/target/org.wso2.carbon.operationscenter.stub-4.5.0-SNAPSHOT.jar /home/jayanga/WSO2/Issues/Development/OC/wso2esb-4.9.0/repository/components/dropins/.
+cp org.wso2.carbon.operationscenter.ui/target/org.wso2.carbon.operationscenter.ui-4.5.0-SNAPSHOT.jar /home/jayanga/WSO2/Issues/Development/OC/wso2esb-4.9.0/repository/components/dropins/.
+
